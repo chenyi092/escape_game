@@ -1,0 +1,499 @@
+/* 背景全体の設定 */
+body {
+  user-select: none; /* 禁止選取文字 */
+  -webkit-user-select: none; /* 兼容 Safari */
+  -moz-user-select: none; /* 兼容 Firefox */
+  -ms-user-select: none; /* 兼容 IE/Edge */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 確保高度覆蓋整個視窗 */
+  background-color: #363535; /* 深黑背景 */
+  font-family: Arial, sans-serif;
+}
+
+.cover-container {
+  position: absolute; /* 絕對定位以覆蓋在 .game-container 上 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000; /* 黑色背景 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* 確保在所有內容上方 */
+}
+
+.cover-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* 確保圖片按比例縮放 */
+}
+
+.cover-menu-container {
+  position: absolute;
+  bottom: 45%; /* 與底部保持一定距離 */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.menu-button-option {
+  width: 200px;
+  height: 50px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 50px;
+}
+
+.menu-button-option:hover {
+  background-color: #444;
+}
+
+/* 中央的長方形容器 */
+.game-container {
+  width: 520px;
+  height: 840px;
+  background-color: #000;
+  border: 2px solid #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 讓內容從上往下排列 */
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding-top: 20px; /* 添加上方間距 */
+}
+
+/* 長方形內的小白色區塊 */
+.inner-box {
+  width: 518px; /* 小長方形寬度 */
+  height: 600px; /* 小長方形高度 */
+  background-color: #ffffff; /* 白色背景 */
+  border: 1px solid #333; /* 深灰色邊框 */
+  position: absolute; /* 讓其相對於父容器定位 */
+  top: 38%; /* 垂直方向定位在容器高度的50% */
+  left: 50%; /* 水平方向定位在容器寬度的50% */
+  transform: translate(-50%, -50%); /* 偏移自身寬高的一半，實現真正的中心 */
+  display: flex;
+  justify-content: center; /* 讓內部文字居中 */
+  align-items: center;
+  font-size: 16px;
+  color: #000; /* 文字顏色為黑色 */
+}
+
+/* 選單按鈕 */
+.menu-button {
+  position: absolute;
+  bottom: 5px;
+  right: 20px;
+  width: 80px;
+  height: 40px;
+  background-color: #000; /* 黑色背景 */
+  color: #fff; /* 白色文字 */
+  border: 1px solid #333; /* 深灰邊框 */
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+/* finish按鈕 */
+.finish-button {
+  position: absolute;
+  top: 50%; /* 調整到畫面中間偏上 */
+  left: 50%; /* 水平居中 */
+  transform: translate(-50%, -50%); /* 修正居中偏移 */
+  width: 100px; /* 調整按鈕寬度 */
+  height: 50px; /* 調整按鈕高度 */
+  background-color: #000; /* 黑色背景 */
+  color: #fff; /* 白色文字 */
+  border: 1px solid #333; /* 深灰邊框 */
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  font-size: 16px; /* 增大字體 */
+  border-radius: 10px; /* 增加圓角 */
+}
+
+/* 左右三角形按鈕容器 */
+.triangle-container {
+  display: flex;
+  justify-content: space-between; /* 左右分散排列 */
+  justify-content: center; /* 按鈕集中在中間 */
+  justify-content: flex-start; /* 按鈕靠左 */
+  justify-content: flex-end; /* 按鈕靠右 */
+  width: 100%; /* 與 game-container 同寬 */
+  padding: 550px; /* 與白色區塊之間的距離 */
+  box-sizing: border-box; /* 包含內間距 */
+}
+
+/* 左右三角形按鈕 */
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  cursor: pointer;
+}
+
+.triangle-left {
+  border-width: 30px 40px 30px 0;
+  border-color: transparent #fff transparent transparent;
+  left: 50px; /* 控制水平方向位置 */
+  bottom: 160px; /* 距離容器底部的距離 */
+}
+
+.triangle-right {
+  border-width: 30px 0 30px 40px;
+  border-color: transparent transparent transparent #fff;
+  right: 50px; /* 控制水平方向位置 */
+  bottom: 160px; /* 距離容器底部的距離 */
+}
+
+/* 道具欄 */
+.inventory {
+  position: absolute; /* 絕對定位 */
+  bottom: 50px; /* 距離容器底部 50px */
+  left: 20px; /* 距離容器左側 20px */
+  width: 480px; /* 固定寬度 */
+  height: 90px; /* 固定高度 */
+  background-color: #111; /* 背景顏色與容器一致 */
+  border-top: 2px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* 道具欄中的格子 */
+.item-slot {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #444;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 道具圖片的樣式 */
+.item-slot img {
+  width: 80%; /* 圖片自動縮放，適配格子大小 */
+  height: auto;
+}
+
+/* 選中的道具欄框樣式 */
+.item-slot.selected {
+  border: 2px solid red; /* 紅色邊框表示選中 */
+}
+
+
+#message-box {
+  animation: fadeIn 0.3s ease; /* 添加淡入效果 */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 背景遮罩 */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9;
+}
+
+/* 通用文字方塊樣式 */
+.message-box {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 600px;
+  padding: 15px 20px;
+  background-color: #fff;
+  color: #000;
+  border: 4px solid #333;
+  border-radius: 5px;
+  z-index: 10;
+  text-align: center; /* 可選，讓文字居中 */
+}
+
+/* 放大圖片的樣式 */
+.zoom-image {
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  max-width: 100%; /* 防止圖片過大，適應容器 */
+  height: auto; /* 保持圖片比例 */
+}
+
+/* 通用關閉按鈕樣式 */
+.close-button {
+  position: absolute;
+  bottom: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 15px;
+  background-color: #404040; /* 深灰色背景 */
+  color: #fff; /* 白色文字 */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+  text-align: center;
+  font-size: 14px; /* 可調整字體大小 */
+}
+
+/* 虛擬區塊通用樣式 */
+.hotspot {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0); /* 默認透明 */
+  cursor: pointer;
+  z-index: 9; /* 默認的 z-index，可根據需要調整 */
+}
+
+/* 密碼輸入容器 */
+.password-input {
+  user-select: none; /* 標準屬性，適用於現代瀏覽器 */
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.password-box {
+  width: 50px;
+  height: 50px;
+  margin-top: 220px;
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #fff;
+}
+
+/* 送出按鈕 */
+.submit-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: white;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+/* pc password */
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute; /* 使用絕對定位 */
+  bottom: 50px; /* 向下移動 */
+  left: 50%; /* 水平居中 */
+  transform: translateX(-50%); /* 修正水平居中的偏移 */
+}
+
+/* pc password input */
+.password-input-pc {
+  width: 200px;
+  padding: 8px;
+  font-size: 16px;
+  text-align: center;
+  margin-right: 20px; /* 與送出鍵的間距 */
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+/* pc submit button */
+.submit-button2 {
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #eaeaea;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button2:hover {
+  background-color: #7d7d7d;
+}
+
+/* Menu 按鈕容器 */
+.menu-container {
+  position: absolute; /* 絕對定位 */
+  top: 50%; /* 水平垂直居中 */
+  left: 50%;
+  transform: translate(-50%, -50%); /* 修正定位 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px; /* 按鈕之間的間距 */
+  background-color: #333; /* 深灰色背景 */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 10; /* Menu 的層級較低 */
+}
+
+/* Menu 按鈕的樣式 */
+.menu-button-option {
+  width: 200px;
+  height: 50px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 50px; /* 讓文字垂直居中 */
+}
+
+/* Menu 按鈕 Hover 效果 */
+.menu-button-option:hover {
+  background-color: #444;
+}
+
+/* 確認小視窗背景 */
+#confirmation-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* 半透明黑色背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100; /* 確保位於最上層 */
+}
+
+/* 確認小視窗 */
+.confirmation-box {
+  background-color: #fff; /* 白色背景 */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 300px;
+}
+
+/* 確認小視窗按鈕容器 */
+.confirmation-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around; /* 按鈕水平間隔 */
+}
+
+/* 確認小視窗按鈕 */
+.confirmation-box .menu-button-option {
+  width: 80px;
+  height: 40px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 40px;
+}
+
+.confirmation-box .menu-button-option:hover {
+  background-color: #444;
+}
+
+/* 表單容器樣式 */
+.load-game-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.8); /* 半透明黑色背景 */
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20; /* 表單層級較高 */
+}
+
+/* 輸入框樣式 */
+#player-name-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+/* 按鈕容器 */
+.load-game-form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* 按鈕之間的距離 */
+  width: 100%; /* 使按鈕容器與輸入框對齊 */
+}
+
+/* 按鈕樣式 */
+#submit-load-button,
+#cancel-load-button {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* 按鈕 Hover 效果 */
+#submit-load-button:hover {
+  background-color: #28a745; /* 綠色 */
+}
+
+#cancel-load-button:hover {
+  background-color: #dc3545; /* 紅色 */
+}
+

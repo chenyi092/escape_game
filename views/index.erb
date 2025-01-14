@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脱出ゲーム</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="game-container">
+    <div class="cover-container">
+      <img src="/home.png" alt="封面" class="cover-image" />
+      <div class="cover-menu-container">
+        <button class="menu-button-option" id="start-game-button">最初からプレー</button>
+        <button class="menu-button-option" id="load-game-button">セーブから再開</button>
+      </div>
+      
+      <div class="load-game-form" style="display: none;">
+        <input type="text" id="player-name-input" placeholder="プレイヤー名を入力してください" />
+        <div class="load-game-form-buttons">
+          <button id="submit-load-button">ロード</button>
+          <button id="cancel-load-button">キャンセル</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-button">Menu</div>
+    <div class="inner-box" id="scene-box"></div>
+    <div class="inventory">
+      <div class="item-slot"></div>
+      <div class="item-slot"></div>
+      <div class="item-slot"></div>
+      <div class="item-slot"></div>
+      <div class="item-slot"></div>
+    </div>
+
+    <div class="triangle-container">
+      <div class="triangle triangle-left" onclick="changeScene(-1)"></div>
+      <div class="triangle triangle-right" onclick="changeScene(1)"></div>
+    </div>
+  </div>
+
+  <script src="/main.js"></script>
+</body>
+</html>
