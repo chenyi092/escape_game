@@ -1216,7 +1216,7 @@ function showOverlayWithMenu(titleText, isEndScreen = false) {
       if (label === "セーブする") {
         button.addEventListener("click", () => {
           // 發送請求檢查後端 session 是否有玩家名稱
-          fetch("/~s2455403/local_only/wp/assets/check_session.rb")
+          fetch("/check_session")
           .then((response) => response.json())
           .then((data) => {
             if (data.playerName) {
@@ -1233,7 +1233,7 @@ function showOverlayWithMenu(titleText, isEndScreen = false) {
       if (label === "セーブから再開") {
         button.addEventListener("click", () => {
             // 發送請求檢查後端 Session 是否存在玩家名稱
-            fetch("/~s2455403/local_only/wp/assets/check_session.rb", {
+            fetch("/check_session", {
               method: "GET",
               credentials: "same-origin" // 確保攜帶同源的 Cookie
           })
@@ -1241,7 +1241,7 @@ function showOverlayWithMenu(titleText, isEndScreen = false) {
           .then(data => {
               if (data.playerName) {
                   // 後端有玩家名稱
-                  fetch(`/~s2455403/local_only/wp/assets/load_game.rb?player_name=${encodeURIComponent(data.playerName)}`, {
+                  fetch(`/load_game?player_name=${encodeURIComponent(data.playerName)}`, {
                       method: "GET",
                       credentials: "same-origin" // 再次攜帶 Cookie
                   })
@@ -1307,7 +1307,7 @@ function showSaveForm() {
 }
 
 function setSessionAndSave(playerName, saveForm) {
-  fetch("/~s2455403/local_only/wp/assets/set_session.rb", {
+  fetch("/set_session", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({ playerName: playerName }),
@@ -1326,7 +1326,7 @@ function setSessionAndSave(playerName, saveForm) {
 
 function saveGame(playerName) {
     // 發送存檔請求
-    fetch("/~s2455403/local_only/wp/assets/save_game.rb", {
+    fetch("/save_game", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
@@ -1470,7 +1470,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 封面按鈕點擊事件
   document.getElementById('start-game-button').addEventListener('click', () => {
     // 發送請求清空存檔
-    fetch("/~s2455403/local_only/wp/assets/reset_save.rb")
+    fetch("/reset_save")
       .then(response => {
         if (response.ok) {
           return response.text(); // 獲取伺服器回傳的訊息
@@ -1503,7 +1503,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    fetch(`/~s2455403/local_only/wp/assets/load_game.rb?player_name=${encodeURIComponent(playerName)}`)
+    fetch(`/load_game?player_name=${encodeURIComponent(playerName)}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
