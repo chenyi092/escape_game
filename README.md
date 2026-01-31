@@ -20,3 +20,23 @@
   - **道具システム**： 道具の選択、ズームイン表示、特定のオブジェクト（電話など）への使用ロジックを JavaScript で実装 。
   - **フラグ管理**： 謎を解いた後のオブジェクトの状態変化（例：電話のテキスト変化）を動的に制御しています 。
 ## ファイル構成 | File Structure
+![file connection](/docs/01-file-connection.png)
+## 実装のこだわり | Key Features & Challenges
+- **UXの向上**： セーブデータがない場合の警告表示や、UIボタンのアニメーションなど、ユーザーが直感的に遊べるデザインを工夫しました 。
+- **バックエンド初挑戦**： 初めてバックエンド（Ruby）を学び、フロントエンドとのデータ連携（JSON）を実装したことで、フルスタック開発の基礎を習得しました 。
+## デモ画面 | Demo
+<p align="center">
+  <img src="/docs/02-homepage.png" width="35%" />
+  <img src="/docs/03-narration.png" width="35%" />
+</p>
+<p align="center">
+  <img src="/docs/04-game-scene.png" width="35%" />
+  <img src="/docs/05-password-input.png" width="35%" />
+</p>
+<p align="center">
+  <img src="/docs/06-item-box.png" width="35%" />
+  <img src="/docs/07-menu.png" width="35%" />
+</p>
+
+### 補足事項
+※ 現在、大学サーバー（筑波大学 CGI）の制限により、学外からの直接アクセスが制限されている場合があります 。
