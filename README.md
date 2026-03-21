@@ -1,3 +1,4 @@
+[繁體中文](./README_zh.md) | [日本語](./README.md)
 # 脱出ゲーム：遅刻まであと15分、授業に間に合え！
 ### [実行および攻略動画](https://www.youtube.com/watch?v=p_RvpuNT_Wg)
 ## 概要 | Project Overview
