@@ -22,7 +22,7 @@
   - **道具**： 使用 JavaScript 實作了道具選擇、放大顯示，以及針對特定物件（如：電話）的使用邏輯。
   - **flag管理**： 針對解開謎題後的物件狀態變化（例如：電話提示的文字更動），進行了動態的邏輯控制。
 ## 檔案構成 | File Structure
-![file connection](/docs/01-file-connection.png)
+![file connection](/docs/08-fileconnect-zh.jpg)
 ## 實作亮點 | Key Features & Challenges
 - **UX的優化**： 在使用者設計上特別下了功夫，以確保用戶能直覺地進行遊戲。例如：在無存檔資料時顯示警告提示，以及為 UI 按鈕加入動畫效果等。
 - **後端初挑戰**： 這是我首次學習後端技術（Ruby），並實作了與前端的資料串接（JSON），藉此掌握了全端開發的基礎能力。
