@@ -12,7 +12,7 @@
 - **Frontend**: JavaScript (互動整體), HTML, CSS
 - **Backend**: Ruby
 - **Database**: 使用 JSON 格式進行資料傳遞，並透過資料庫進行狀態儲存
-- **Deployment**: 學校 CGI サーバー
+- **Deployment**: 學校 CGI 伺服器
 ## 系統架構 | System Architecture
 #### 1. database・session管理
   設計上重視資料的一致性與使用者體驗。
